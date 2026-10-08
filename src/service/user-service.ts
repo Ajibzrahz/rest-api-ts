@@ -1,7 +1,7 @@
-import type { UserDocument } from "../models/user-model.js";
+import type { UserDocument } from "../models/user-model";
 import mongoose, { type QueryFilter } from "mongoose";
-import User from "../models/user-model.js";
-import { omit } from "lodash-es";
+import User from "../models/user-model";
+import { omit } from "lodash";
 
 export async function createUser(
   input: Pick<UserDocument, "email" | "password" | "name">,

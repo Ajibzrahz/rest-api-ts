@@ -1,7 +1,7 @@
 import type { Request, Response, NextFunction } from "express";
-import { get } from "lodash-es";
-import { verifyJwt } from "../utils/jwt-utils.js";
-import { reIssueAccessToken } from "../service/session-service.js";
+import { get } from "lodash";
+import { verifyJwt } from "../utils/jwt-utils";
+import { reIssueAccessToken } from "../service/session-service";
 
 const authorization = async (
   req: Request,

@@ -1,8 +1,8 @@
 import type { QueryFilter, UpdateQuery } from "mongoose";
-import Session, { type SessionDocument } from "../models/session-model.js";
-import { signJwt, verifyJwt } from "../utils/jwt-utils.js";
-import { get, omit } from "lodash-es";
-import { findUser } from "./user-service.js";
+import Session, { type SessionDocument } from "../models/session-model";
+import { signJwt, verifyJwt } from "../utils/jwt-utils";
+import { get, omit } from "lodash";
+import { findUser } from "./user-service";
 import config from "config";
 
 export async function createSession(userId: string, userAgent: string) {

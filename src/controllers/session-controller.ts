@@ -3,16 +3,15 @@ import {
   createSession,
   findSessions,
   updateSessions,
-} from "../service/session-service.js";
-import { validatePassword } from "../service/user-service.js";
-import { signJwt } from "../utils/jwt-utils.js";
+} from "../service/session-service";
+import { validatePassword } from "../service/user-service";
+import { signJwt } from "../utils/jwt-utils";
 import config from "config";
-import { omit } from "lodash-es";
+import { omit } from "lodash";
 
 export async function createUserSessionHandler(
   req: Request,
   res: Response,
-  next: NextFunction,
 ) {
   const user = await validatePassword(req.body);
 

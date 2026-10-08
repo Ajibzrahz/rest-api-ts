@@ -1,6 +1,6 @@
 import type { QueryFilter, QueryOptions, UpdateQuery } from "mongoose";
-import Product, { type ProductDocument } from "../models/product-model.js";
-import type { CreateProductInput } from "../schema/product-schema.js";
+import Product, { type ProductDocument } from "../models/product-model";
+import type { CreateProductInput } from "../schema/product-schema";
 
 export async function createProduct(
   input: CreateProductInput["body"] & { user: string },
@@ -11,7 +11,7 @@ export async function findProduct(
   query: QueryFilter<ProductDocument>,
   options: QueryOptions = { lean: true },
 ) {
-  return Product.findOne(query);
+  return Product.findOne(query, {}, options);
 }
 export async function updateProduct(
   query: QueryFilter<ProductDocument>,

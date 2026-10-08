@@ -4,14 +4,14 @@ import type {
   DeleteProductInput,
   GetProductInput,
   UpdateProductInput,
-} from "../schema/product-schema.js";
+} from "../schema/product-schema";
 import {
   createProduct,
   deleteProduct,
   findProduct,
   updateProduct,
-} from "../service/product-service.js";
-import logger from "../utils/logger.js";
+} from "../service/product-service";
+import logger from "../utils/logger";
 
 export async function createProductHandler(
   req: Request<{}, {}, CreateProductInput["body"]>,
@@ -49,7 +49,9 @@ export async function updateProductHandler(
       return res.sendStatus(403);
     }
 
-    const updatedProduct = await  updateProduct({ productId }, update, { new: true });
+    const updatedProduct = await updateProduct({ productId }, update, {
+      new: true,
+    });
 
     return res.send(updatedProduct);
   } catch (error: any) {
@@ -61,12 +63,15 @@ export async function getProductHandler(
   req: Request<GetProductInput["params"], {}, {}>,
   res: Response,
 ) {
-    const productId = req.params.productId
-    const product = await findProduct({productId})
+  const productId = req.params.productId;
+  const product = await findProduct({ productId });
 
-    res.send(product)
+  if (!product) {
+    return res.sendStatus(404);
+  }
+
+  res.send(product);
 }
-
 
 export async function deleteProductHandler(
   req: Request<DeleteProductInput["params"], {}, {}>,
@@ -89,8 +94,7 @@ export async function deleteProductHandler(
 
     await deleteProduct({ productId });
 
-    return res.sendStatus(200)
-
+    return res.sendStatus(200);
   } catch (error: any) {
     logger.error(error);
   }

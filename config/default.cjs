@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   port: 1337,
   dbUri: "mongodb://localhost:27017/TS-REST-API",
   saltWorkFactor: 10,

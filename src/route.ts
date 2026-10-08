@@ -1,26 +1,26 @@
 import type { Express, Request, Response } from "express";
-import { createUserHandler } from "./controllers/user-controller.js";
-import validate from "./middleware/validate-resource.js";
-import { createUserSchema } from "./schema/user-schema.js";
+import { createUserHandler } from "./controllers/user-controller";
+import validate from "./middleware/validate-resource";
+import { createUserSchema } from "./schema/user-schema";
 import {
   createUserSessionHandler,
   deleteSessionHandler,
   getUserSessionHandler,
-} from "./controllers/session-controller.js";
-import { createSessionSchema } from "./schema/session-schema.js";
-import requireUser from "./middleware/require-user.js";
+} from "./controllers/session-controller";
+import { createSessionSchema } from "./schema/session-schema";
+import requireUser from "./middleware/require-user";
 import {
   createProductSchema,
   deleteProductSchema,
   getProductSchema,
   updateProductSchema,
-} from "./schema/product-schema.js";
+} from "./schema/product-schema";
 import {
   createProductHandler,
   deleteProductHandler,
   getProductHandler,
   updateProductHandler,
-} from "./controllers/product-controller.js";
+} from "./controllers/product-controller";
 
 function route(app: Express) {
   app.get("/healthCheck", (req: Request, res: Response) => res.sendStatus(200));
